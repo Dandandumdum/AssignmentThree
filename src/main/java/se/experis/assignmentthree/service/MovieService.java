@@ -17,8 +17,10 @@ public class MovieService {
     @Autowired
     private CharacterRepository characterRepository;
 
-    public List<Character> getCharactersByMovie(Long id){
-        return characterRepository.getByMovieId(id);    }
+   public List<Character> getCharactersByMovie(Long id){
+        return characterRepository.getAllById(id);    }
+
+
 
     public Movie save(Movie movie) {
         return movieRepository.save(movie);

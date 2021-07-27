@@ -53,6 +53,20 @@ public class MovieController {
         HttpStatus status = HttpStatus.CREATED;
         return new ResponseEntity<>(add, status);
     }
+    @PutMapping("/movie/{movieId}")
+    public ResponseEntity<Movie> updateMovie(@PathVariable Long movieId, @RequestBody Movie movie){
+        Movie returnMovie = new Movie();
+        HttpStatus status;
 
+        if(!movieId.equals(movie.getId())){
+            status = HttpStatus.BAD_REQUEST;
+            return new ResponseEntity<>(returnMovie,status);
+        }
+        returnMovie = movieService.save(movie);
+        status = HttpStatus.NO_CONTENT;
+        System.out.println();
+        return new ResponseEntity<>(returnMovie, status);
+
+    }
 
 }

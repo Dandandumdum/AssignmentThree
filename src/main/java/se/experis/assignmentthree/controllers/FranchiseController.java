@@ -54,13 +54,10 @@ public class FranchiseController {
             status = HttpStatus.BAD_REQUEST;
             return new ResponseEntity<>(returnFran,status);
         }
-
         returnFran = franchiseService.save(franchise);
         status = HttpStatus.NO_CONTENT;
         System.out.println();
         return new ResponseEntity<>(returnFran, status);
-
-
 
     }
 
