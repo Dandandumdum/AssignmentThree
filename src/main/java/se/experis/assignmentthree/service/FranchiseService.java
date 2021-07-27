@@ -2,6 +2,7 @@ package se.experis.assignmentthree.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import se.experis.assignmentthree.models.Character;
 import se.experis.assignmentthree.models.Franchise;
 import se.experis.assignmentthree.models.Movie;
 import se.experis.assignmentthree.repositories.CharacterRepository;
@@ -19,11 +20,11 @@ public class FranchiseService {
     @Autowired
     private CharacterRepository characterRepository;
 
-    public List<String> getMoviesByFranchise(Long id){
-        return franchiseRepository.getById(id).movies();
+    public List<Movie> getMoviesByFranchise(Long id){
+        return (List<Movie>) franchiseRepository.getById(id).movies;
     }
-    public List<String> getCharactersByFranchise(Long id){
-        return franchiseRepository.getById(id).characters();
+    public List<Character> getCharactersByFranchise(Long id){
+        return (List<Character>) franchiseRepository.getById(id).characters;
     }
 
     public Franchise save(Franchise franchise) {

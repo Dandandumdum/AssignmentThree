@@ -17,7 +17,7 @@ public class Franchise {
 
     @OneToMany
     @JoinColumn(name = "movie_id")
-    Set<Movie> movies;
+    public Set <Movie> movies;
 
     @JsonGetter("movies")
     public List<String> movies() {
@@ -31,7 +31,7 @@ public class Franchise {
     }
     @OneToMany
     @JoinColumn(name = "character_id")
-    Set<Character> characters;
+    public Set<Character> characters;
 
     @JsonGetter("characters")
     public List<String> characters() {
