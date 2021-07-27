@@ -26,6 +26,19 @@ public class FranchiseController {
         HttpStatus status = HttpStatus.OK;
         return new ResponseEntity<>(franchises,status);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<Franchise> getFranchise(@PathVariable Long id){
+        Franchise returnFran = new Franchise();
+        HttpStatus status;
+
+        if(franchiseService.exists(id)){
+            status = HttpStatus.OK;
+            returnFran = franchiseService.getById(id);
+        } else {
+            status = HttpStatus.NOT_FOUND;
+        }
+        return new ResponseEntity<>(returnFran, status);
+    }
 
     @GetMapping("/movies/{id}")
     public ResponseEntity<List<Movie>> getAllMoviesByFranchise(@PathVariable Long id){

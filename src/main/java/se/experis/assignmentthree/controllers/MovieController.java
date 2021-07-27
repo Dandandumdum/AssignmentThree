@@ -26,9 +26,10 @@ public class MovieController {
     public ResponseEntity<Movie> getMovie(@PathVariable Long id){
         Movie returnMovie = new Movie();
         HttpStatus status;
+
         if(movieService.exists(id)){
             status = HttpStatus.OK;
-            returnMovie = movieService.getByMovieId(id);
+            returnMovie = movieService.getById(id);
         } else {
             status = HttpStatus.NOT_FOUND;
         }

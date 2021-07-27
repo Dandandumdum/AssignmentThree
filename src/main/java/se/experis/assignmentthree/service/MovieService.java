@@ -31,8 +31,8 @@ public class MovieService {
     public boolean exists(Long id){
         return movieRepository.existsById(id);
     }
-    public Movie getByMovieId(Long id){
-        return movieRepository.getById(id);
+    public Movie getById(Long id){
+        return movieRepository.getMovieById(id);
     }
 
 /*

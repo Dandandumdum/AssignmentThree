@@ -33,6 +33,13 @@ public class FranchiseService {
         return franchiseRepository.findAll();
     }
 
+    public boolean exists(Long id) {
+        return franchiseRepository.existsById(id);
+    }
+    public Franchise getById(Long id){
+        return franchiseRepository.getFranchiseById(id);
+    }
+
 
 
    /* public List<Character> getAllCharacters() {return franchiseRepository.findAll(); }

@@ -12,7 +12,7 @@ import java.util.Set;
 public interface CharacterRepository extends JpaRepository<Character,Long> {
     List<Character> getAllByFranchiseId(Long id);
     List<Character> getAllById(Long id);
-    Character getById(Long id);
+    Character getCharacterById(Long id);
 
 
 }

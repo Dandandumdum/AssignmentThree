@@ -3,10 +3,7 @@ package se.experis.assignmentthree.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import se.experis.assignmentthree.models.Character;
 import se.experis.assignmentthree.models.Movie;
 import se.experis.assignmentthree.service.CharacterService;
@@ -26,5 +23,18 @@ public class CharacterController {
         List<Character>characters = characterService.getCharacters();
         HttpStatus status = HttpStatus.OK;
         return new ResponseEntity<>(characters,status);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Character> getCharacter(@PathVariable Long id){
+        Character returnCharacter = new Character();
+        HttpStatus status;
+
+        if(characterService.exists(id)){
+            status = HttpStatus.OK;
+            returnCharacter = characterService.getById(id);
+        } else {
+            status = HttpStatus.NOT_FOUND;
+        }
+        return new ResponseEntity<>(returnCharacter, status);
     }
 }
