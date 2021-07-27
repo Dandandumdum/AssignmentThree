@@ -1,6 +1,7 @@
 package se.experis.assignmentthree.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
@@ -10,6 +11,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Character {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

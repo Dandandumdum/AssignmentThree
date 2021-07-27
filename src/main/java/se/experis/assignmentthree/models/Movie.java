@@ -1,6 +1,7 @@
 package se.experis.assignmentthree.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
 import java.util.List;
@@ -8,11 +9,13 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String director;
     @JoinColumn(name = "movie_title")
     private String movieTitle;
 
@@ -20,7 +23,7 @@ public class Movie {
 
     @JoinColumn(name = "release_year")
     private String releaseYear;
-    private String director;
+
     private String picture;//URL
     private String trailer;//URL
 

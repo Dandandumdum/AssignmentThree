@@ -1,6 +1,7 @@
 package se.experis.assignmentthree.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Franchise {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -26,6 +26,6 @@ public class CharacterService {
     }
 
     public Character save(Character character) {
-        return characterRepository.save(character);
+        return characterRepository.saveAndFlush(character);
     }
 }
