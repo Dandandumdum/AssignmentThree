@@ -22,14 +22,14 @@ public class FranchiseController {
 
 
     @GetMapping("/movies/{id}")
-    public ResponseEntity<List<Franchise>> getAllMoviesByFranchise(@PathVariable Long id){
-        List<Franchise> data = (List<Franchise>) franchiseService.getMoviesByFranchise();
+    public ResponseEntity<List<Movie>> getAllMoviesByFranchise(@PathVariable Long id){
+        List<Movie> data = franchiseService.getMoviesByFranchise(id);
         HttpStatus status = HttpStatus.OK;
         return new ResponseEntity<>(data, status);
     }
     @GetMapping("/characters/{id}")
-    public ResponseEntity<List<Franchise>> getAllCharactersByFranchise(@PathVariable Long id){
-        List<Franchise> data = (List<Franchise>) franchiseService.getCharactersByFranchise();
+    public ResponseEntity<List<Character>> getAllCharactersByFranchise(@PathVariable Long id){
+        List<Character> data =  franchiseService.getCharactersByFranchise(id);
         HttpStatus status = HttpStatus.OK;
         return new ResponseEntity<>(data, status);
     }
