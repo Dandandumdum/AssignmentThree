@@ -40,6 +40,23 @@ public class FranchiseController {
         // Return a location -> url to get the new resource
         return new ResponseEntity<>(add, status);
     }
+    @PostMapping("/movie/{movieIds}")
+    public ResponseEntity<Franchise> updateFranchise(@PathVariable int[] movieIds, @RequestBody Franchise franchise){
+        Franchise returnFran = new Franchise();
+        HttpStatus status;
+        for (int i = 0; i < movieIds.length; i++) {
+            if(movieIds[i] != (franchise.getId())){
+                status = HttpStatus.BAD_REQUEST;
+                return new ResponseEntity<>(returnFran,status);
+            }
+            returnFran = franchiseService.save(franchise);
+            status = HttpStatus.NO_CONTENT;
+            return new ResponseEntity<>(returnFran, status);
+        }
+        return null;
+
+
+    }
 
 
 
