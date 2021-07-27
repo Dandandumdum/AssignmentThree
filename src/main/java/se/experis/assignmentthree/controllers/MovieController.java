@@ -22,9 +22,28 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Movie> getMovie(@PathVariable Long id){
+        Movie returnMovie = new Movie();
+        HttpStatus status;
+        if(movieService.exists(id)){
+            status = HttpStatus.OK;
+            returnMovie = movieService.getByMovieId(id);
+        } else {
+            status = HttpStatus.NOT_FOUND;
+        }
+        return new ResponseEntity<>(returnMovie, status);
+    }
+    @GetMapping
+    public ResponseEntity<List<Movie>>getAllMovies(){
+    List<Movie>movies = movieService.getMovies();
+    HttpStatus status = HttpStatus.OK;
+    return new ResponseEntity<>(movies,status);
+    }
+
     @GetMapping("/characters/{id}")
-    public ResponseEntity<List<Movie>> getAllCharactersByMovie(@PathVariable Long id){
-        List<Movie> data = (List<Movie>) getAllCharactersByMovie(id);
+    public ResponseEntity<List<Character>> getAllCharactersByMovie(@PathVariable Long id){
+        List<Character> data = movieService.getCharactersByMovie(id);
         HttpStatus status = HttpStatus.OK;
         return new ResponseEntity<>(data, status);
     }

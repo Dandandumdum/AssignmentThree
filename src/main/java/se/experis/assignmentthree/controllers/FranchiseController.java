@@ -20,6 +20,12 @@ public class FranchiseController {
     @Autowired
     private FranchiseService franchiseService;
 
+    @GetMapping
+    public ResponseEntity<List<Franchise>>getAllFranchises(){
+        List<Franchise>franchises = franchiseService.getFranchises();
+        HttpStatus status = HttpStatus.OK;
+        return new ResponseEntity<>(franchises,status);
+    }
 
     @GetMapping("/movies/{id}")
     public ResponseEntity<List<Movie>> getAllMoviesByFranchise(@PathVariable Long id){
@@ -43,12 +49,12 @@ public class FranchiseController {
     public ResponseEntity<Franchise> updateFranchise(@PathVariable Long franchiseId, @RequestBody Franchise franchise){
         Franchise returnFran = new Franchise();
         HttpStatus status;
-/*
+
         if(!franchiseId.equals(franchise.getId())){
             status = HttpStatus.BAD_REQUEST;
             return new ResponseEntity<>(returnFran,status);
         }
- */
+
         returnFran = franchiseService.save(franchise);
         status = HttpStatus.NO_CONTENT;
         System.out.println();
