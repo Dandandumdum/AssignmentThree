@@ -21,6 +21,10 @@ public class MovieService {
         return movieRepository.getById(id).characters();
     }
 
+    public Movie save(Movie movie) {
+        return movieRepository.save(movie);
+    }
+
 /*
 public boolean updateCharactersInMovie(long movieId, int[] charactersToAdd) {
         return movieRepository.updateCharacterInMovie(movieId, charactersToAdd);

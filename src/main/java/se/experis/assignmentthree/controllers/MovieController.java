@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import se.experis.assignmentthree.models.Character;
+import se.experis.assignmentthree.models.Franchise;
 import se.experis.assignmentthree.models.Movie;
 import se.experis.assignmentthree.repositories.MovieRepository;
 import se.experis.assignmentthree.service.CharacterService;
@@ -27,18 +28,12 @@ public class MovieController {
         HttpStatus status = HttpStatus.OK;
         return new ResponseEntity<>(data, status);
     }
-/*
-    @PostMapping("/{id}")
-    public ResponseEntity<Movie> updateCharacterInMovie(@PathVariable long id ,@RequestBody int [] charactersToUpdate){
-        HttpStatus status;
-        Movie returnMovie = new Movie();
-
-        //add boolean check
-
-        status = HttpStatus.NO_CONTENT;
-        return new ResponseEntity<>(returnMovie,status);
+    @PostMapping
+    public ResponseEntity<Movie> addMovie(@RequestBody Movie movie){
+        Movie add = movieService.save(movie);
+        HttpStatus status = HttpStatus.CREATED;
+        return new ResponseEntity<>(add, status);
     }
-*/
 
 
 }
