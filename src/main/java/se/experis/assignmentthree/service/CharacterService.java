@@ -24,4 +24,8 @@ public class CharacterService {
     public boolean exists(Long id) {
         return characterRepository.existsById(id);
     }
+
+    public Character save(Character character) {
+        return characterRepository.save(character);
+    }
 }

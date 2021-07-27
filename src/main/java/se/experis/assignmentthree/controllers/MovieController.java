@@ -54,7 +54,7 @@ public class MovieController {
         HttpStatus status = HttpStatus.CREATED;
         return new ResponseEntity<>(add, status);
     }
-    @PutMapping("/movie/{movieId}")
+    @PutMapping("/update/{movieId}")
     public ResponseEntity<Movie> updateMovie(@PathVariable Long movieId, @RequestBody Movie movie){
         Movie returnMovie = new Movie();
         HttpStatus status;

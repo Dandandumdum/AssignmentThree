@@ -58,7 +58,7 @@ public class FranchiseController {
         HttpStatus status = HttpStatus.CREATED;
         return new ResponseEntity<>(add, status);
     }
-    @PutMapping("/movie/{franchiseId}")
+    @PutMapping("/update/{franchiseId}")
     public ResponseEntity<Franchise> updateFranchise(@PathVariable Long franchiseId, @RequestBody Franchise franchise){
         Franchise returnFran = new Franchise();
         HttpStatus status;
