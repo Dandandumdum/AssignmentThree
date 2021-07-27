@@ -26,7 +26,7 @@ public class FranchiseService {
     }
 
     public Franchise save(Franchise franchise) {
-        return franchiseRepository.save(franchise);
+        return franchiseRepository.saveAndFlush(franchise);
     }
 
     public List<Franchise> getFranchises() {

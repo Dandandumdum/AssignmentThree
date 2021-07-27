@@ -73,6 +73,23 @@ public class FranchiseController {
         return new ResponseEntity<>(returnFran, status);
 
     }
+    @PutMapping("/update/movie/{franchiseId}")
+    public ResponseEntity<Franchise> updateMovieInFranchise(@PathVariable Long franchiseId, @RequestBody Franchise franchise){
+        Franchise returnFran = new Franchise();
+        HttpStatus status;
+
+        if(!franchiseId.equals(franchise.getId())){
+            status = HttpStatus.BAD_REQUEST;
+            return new ResponseEntity<>(returnFran,status);
+        }
+        returnFran = franchiseService.save(franchise);
+        status = HttpStatus.NO_CONTENT;
+        System.out.println();
+        return new ResponseEntity<>(returnFran, status);
+
+    }
+
+
 
 
 

@@ -31,7 +31,7 @@ public class Franchise {
         return null;
     }
     @OneToMany
-    @JoinColumn(name = "character_id")
+    @JoinColumn(name = "franchise_id")
     public Set<Character> characters;
 
     @JsonGetter("characters")
