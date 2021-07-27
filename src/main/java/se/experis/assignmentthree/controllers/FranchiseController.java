@@ -23,13 +23,13 @@ public class FranchiseController {
 
     @GetMapping("/movies/{id}")
     public ResponseEntity<List<Franchise>> getAllMoviesByFranchise(@PathVariable Long id){
-        List<Franchise> data = (List<Franchise>) getAllMoviesByFranchise(id);
+        List<Franchise> data = (List<Franchise>) franchiseService.getMoviesByFranchise();
         HttpStatus status = HttpStatus.OK;
         return new ResponseEntity<>(data, status);
     }
     @GetMapping("/characters/{id}")
     public ResponseEntity<List<Franchise>> getAllCharactersByFranchise(@PathVariable Long id){
-        List<Franchise> data = (List<Franchise>) getAllCharactersByFranchise(id);
+        List<Franchise> data = (List<Franchise>) franchiseService.getCharactersByFranchise();
         HttpStatus status = HttpStatus.OK;
         return new ResponseEntity<>(data, status);
     }
