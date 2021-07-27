@@ -17,7 +17,7 @@ public class Franchise {
     private String description;
 
     @OneToMany
-    @JoinColumn(name = "movie_id")
+    @JoinColumn(name = "franchise_id")
     public Set <Movie> movies;
 
     @JsonGetter("movies")
