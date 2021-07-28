@@ -7,7 +7,7 @@ import se.experis.assignmentthree.repositories.CharacterRepository;
 import se.experis.assignmentthree.repositories.MovieRepository;
 
 import java.util.List;
-
+//Service class for character object.
 @Service
 public class CharacterService {
 

@@ -15,21 +15,21 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/v1/characters")
 public class CharacterController {
-
+    //All endpoints return a response entity containing both a http status and the actual Json body
     @Autowired
     private CharacterService characterService;
 
-    @GetMapping
+    @GetMapping//Gets every franchise and returns it as a list
     public ResponseEntity<List<Character>> getAllCharacters(){
         List<Character>characters = characterService.getCharacters();
         HttpStatus status = HttpStatus.OK;
         return new ResponseEntity<>(characters,status);
     }
-    @GetMapping("/{id}")
+    @GetMapping("/{id}")//Gets a specific character based upon input id
     public ResponseEntity<Character> getCharacter(@PathVariable Long id){
         Character returnCharacter = new Character();
         HttpStatus status;
-
+        //Checks whether object exists, returning 404 if not.
         if(characterService.exists(id)){
             status = HttpStatus.OK;
             returnCharacter = characterService.getById(id);
@@ -38,17 +38,17 @@ public class CharacterController {
         }
         return new ResponseEntity<>(returnCharacter, status);
     }
-    @PostMapping
+    @PostMapping//Creates a character object
     public ResponseEntity<Character> addCharacter(@RequestBody Character character){
         Character add = characterService.save(character);
         HttpStatus status = HttpStatus.CREATED;
         return new ResponseEntity<>(add, status);
     }
-    @PutMapping("/update/{characterId}")
+    @PutMapping("/update/{characterId}")//Updates the character object with matching id to the input
     public ResponseEntity<Character> updateCharacter(@PathVariable Long characterId, @RequestBody Character character){
         Character returnCharacter = new Character();
         HttpStatus status;
-
+        //Checks whether the franchise object to be updated matches the object specified by the input, returning BAD REQUEST if not
         if(!characterId.equals(character.getId())){
             status = HttpStatus.BAD_REQUEST;
             return new ResponseEntity<>(returnCharacter,status);

@@ -11,9 +11,8 @@ import java.util.stream.Collectors;
 
 @Entity
 @DynamicUpdate
-//@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Movie {
-    @Id
+    @Id//Auto-Incremented Id value
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
