@@ -53,8 +53,8 @@ public class Movie {
     @JsonGetter("characters")
     public List<String> characters() {
         return characters.stream()
-                .map(character -> {
-                    return "/api/v1/characters/" + character.getId();
+                .map(characters -> {
+                    return "/api/v1/characters/" + characters.getId();
                 }).collect(Collectors.toList());
     }
 
