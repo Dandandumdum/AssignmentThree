@@ -12,7 +12,8 @@ import java.util.List;
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Long> {
     List<Movie> getAllByFranchiseId(Long franchise_id);
-    Movie getMovieById(Long id);
+    Movie findMovieById(Long id);
+
 
    // boolean updateCharacterInMovie(long id, int[] charactersToAdd);
 }

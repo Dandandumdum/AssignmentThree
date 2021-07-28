@@ -17,6 +17,7 @@ public class CharacterService {
     public List<Character> getCharacters() {
         return characterRepository.findAll();
     }
+
     public Character getById(Long id){
         return characterRepository.getCharacterById(id);
     }

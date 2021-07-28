@@ -2,6 +2,7 @@ package se.experis.assignmentthree.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
+@DynamicUpdate
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Franchise {
     @Id

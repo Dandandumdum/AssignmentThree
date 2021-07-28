@@ -6,7 +6,5 @@ import se.experis.assignmentthree.models.Franchise;
 
 @Repository
 public interface FranchiseRepository extends JpaRepository<Franchise,Long> {
-
-
     Franchise getFranchiseById(Long id);
 }
