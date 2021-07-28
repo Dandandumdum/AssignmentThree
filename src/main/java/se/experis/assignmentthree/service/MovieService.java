@@ -8,7 +8,7 @@ import se.experis.assignmentthree.repositories.CharacterRepository;
 import se.experis.assignmentthree.repositories.MovieRepository;
 
 import java.util.List;
-
+//Service class for Movie object
 @Service
 public class MovieService {
 
@@ -17,35 +17,22 @@ public class MovieService {
     @Autowired
     private CharacterRepository characterRepository;
 
-   public List<Character> getCharactersByMovie(Long id){
-        return characterRepository.getAllById(id);    }
-
-
+    public List<Character> getCharactersByMovie(Long id){ return characterRepository.getAllById(id);    }
 
     public Movie save(Movie movie) {
         return movieRepository.save(movie);
     }
+
     public List<Movie> getMovies(){
         return movieRepository.findAll();
     }
+
     public boolean exists(Long id){
         return movieRepository.existsById(id);
     }
+
     public Movie getById(Long id){
-        return movieRepository.getMovieById(id);
+        return movieRepository.findMovieById(id);
     }
-
-/*
-public boolean updateCharactersInMovie(long movieId, int[] charactersToAdd) {
-        return movieRepository.updateCharacterInMovie(movieId, charactersToAdd);
-    }
-    public Movie getMovieById(long id){
-        return movieRepository.getById(id);
-    }
- */
-
-
-
-
 
 }

@@ -2,6 +2,7 @@ package se.experis.assignmentthree.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,9 +10,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@DynamicUpdate
 public class Movie {
-    @Id
+    @Id//Auto-Incremented Id value
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -48,11 +49,11 @@ public class Movie {
     )
     public Set<Character> characters;
 
-    @JsonGetter("character")
+    @JsonGetter("characters")
     public List<String> characters() {
         return characters.stream()
-                .map(character -> {
-                    return "/api/v1/characters/" + character.getId();
+                .map(characters -> {
+                    return "/api/v1/characters/" + characters.getId();
                 }).collect(Collectors.toList());
     }
 

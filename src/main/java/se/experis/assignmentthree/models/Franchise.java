@@ -2,6 +2,7 @@ package se.experis.assignmentthree.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,9 +10,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@DynamicUpdate
 public class Franchise {
-    @Id
+    @Id//Auto-Incremented Id value
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
