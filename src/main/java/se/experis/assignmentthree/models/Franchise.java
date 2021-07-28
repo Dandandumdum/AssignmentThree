@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 @Entity
 @DynamicUpdate
-@JsonInclude(JsonInclude.Include.NON_NULL)
+//@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Franchise {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -14,9 +14,7 @@ public class CharacterService {
     @Autowired
     private CharacterRepository characterRepository;
 
-    public List<Character> getCharacters() {
-        return characterRepository.findAll();
-    }
+    public List<Character> getCharacters() { return characterRepository.findAll(); }
 
     public Character getById(Long id){
         return characterRepository.getCharacterById(id);
@@ -27,6 +25,6 @@ public class CharacterService {
     }
 
     public Character save(Character character) {
-        return characterRepository.saveAndFlush(character);
+        return characterRepository.save(character);
     }
 }

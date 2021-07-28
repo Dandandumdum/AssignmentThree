@@ -10,7 +10,7 @@ import java.util.Set;
 
 @Repository
 public interface CharacterRepository extends JpaRepository<Character,Long> {
-    List<Character> getAllByFranchiseId(Long id);
+    List<Character> findAllByFranchiseId(Long id);
     List<Character> getAllById(Long id);
     Character getCharacterById(Long id);
 

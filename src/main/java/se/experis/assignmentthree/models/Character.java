@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 @Entity
 @DynamicUpdate
-@JsonInclude(JsonInclude.Include.NON_NULL)
+//@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Character {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -20,8 +20,6 @@ public class MovieService {
    public List<Character> getCharactersByMovie(Long id){
         return characterRepository.getAllById(id);    }
 
-
-
     public Movie save(Movie movie) {
         return movieRepository.save(movie);
     }
@@ -34,18 +32,5 @@ public class MovieService {
     public Movie getById(Long id){
         return movieRepository.findMovieById(id);
     }
-
-/*
-public boolean updateCharactersInMovie(long movieId, int[] charactersToAdd) {
-        return movieRepository.updateCharacterInMovie(movieId, charactersToAdd);
-    }
-    public Movie getMovieById(long id){
-        return movieRepository.getById(id);
-    }
- */
-
-
-
-
 
 }

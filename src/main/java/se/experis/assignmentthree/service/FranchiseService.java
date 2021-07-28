@@ -21,13 +21,12 @@ public class FranchiseService {
     private CharacterRepository characterRepository;
 
     public List<Movie> getMoviesByFranchise(Long id){ return movieRepository.getAllByFranchiseId(id); }
-    public List<Character> getCharactersByFranchise(Long id){
-        return characterRepository.getAllByFranchiseId(id);
-    }
+    public List<Character> getCharactersByFranchise(Long id){ return characterRepository.findAllByFranchiseId(id); }
 
     public Franchise save(Franchise franchise) {
-        return franchiseRepository.saveAndFlush(franchise);
+        return franchiseRepository.save(franchise);
     }
+  //  public Franchise update(Franchise franchise{ return franchiseRepository.})
 
     public List<Franchise> getFranchises() {
         return franchiseRepository.findAll();
