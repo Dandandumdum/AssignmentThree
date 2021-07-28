@@ -20,6 +20,25 @@ public class FranchiseController {
     @Autowired
     private FranchiseService franchiseService;
 
+    @GetMapping
+    public ResponseEntity<List<Franchise>>getAllFranchises(){
+        List<Franchise>franchises = franchiseService.getFranchises();
+        HttpStatus status = HttpStatus.OK;
+        return new ResponseEntity<>(franchises,status);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Franchise> getFranchise(@PathVariable Long id){
+        Franchise returnFran = new Franchise();
+        HttpStatus status;
+
+        if(franchiseService.exists(id)){
+            status = HttpStatus.OK;
+            returnFran = franchiseService.getById(id);
+        } else {
+            status = HttpStatus.NOT_FOUND;
+        }
+        return new ResponseEntity<>(returnFran, status);
+    }
 
     @GetMapping("/movies/{id}")
     public ResponseEntity<List<Movie>> getAllMoviesByFranchise(@PathVariable Long id){
@@ -37,9 +56,40 @@ public class FranchiseController {
     public ResponseEntity<Franchise> addFranchise(@RequestBody Franchise franchise){
         Franchise add = franchiseService.save(franchise);
         HttpStatus status = HttpStatus.CREATED;
-        // Return a location -> url to get the new resource
         return new ResponseEntity<>(add, status);
     }
+    @PutMapping("/update/{franchiseId}")
+    public ResponseEntity<Franchise> updateFranchise(@PathVariable Long franchiseId, @RequestBody Franchise franchise){
+        Franchise returnFran = new Franchise();
+        HttpStatus status;
+
+        if(!franchiseId.equals(franchise.getId())){
+            status = HttpStatus.BAD_REQUEST;
+            return new ResponseEntity<>(returnFran,status);
+        }
+        returnFran = franchiseService.save(franchise);
+        status = HttpStatus.NO_CONTENT;
+        System.out.println();
+        return new ResponseEntity<>(returnFran, status);
+
+    }
+    @PutMapping("/update/movie/{franchiseId}")
+    public ResponseEntity<Franchise> updateMovieInFranchise(@PathVariable Long franchiseId, @RequestBody Franchise franchise){
+        Franchise returnFran = new Franchise();
+        HttpStatus status;
+
+        if(!franchiseId.equals(franchise.getId())){
+            status = HttpStatus.BAD_REQUEST;
+            return new ResponseEntity<>(returnFran,status);
+        }
+        returnFran = franchiseService.save(franchise);
+        status = HttpStatus.NO_CONTENT;
+        System.out.println();
+        return new ResponseEntity<>(returnFran, status);
+
+    }
+
+
 
 
 

@@ -1,6 +1,7 @@
 package se.experis.assignmentthree.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
 import java.util.List;
@@ -8,15 +9,17 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Franchise {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private String description;
 
     @OneToMany
-    @JoinColumn(name = "movie_id")
+    @JoinColumn(name = "franchise_id")
     public Set <Movie> movies;
 
     @JsonGetter("movies")
@@ -30,7 +33,7 @@ public class Franchise {
         return null;
     }
     @OneToMany
-    @JoinColumn(name = "character_id")
+    @JoinColumn(name = "franchise_id")
     public Set<Character> characters;
 
     @JsonGetter("characters")
@@ -52,4 +55,21 @@ public class Franchise {
     public Long getId() {
         return id;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
 }

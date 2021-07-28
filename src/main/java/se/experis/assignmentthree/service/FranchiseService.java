@@ -20,15 +20,24 @@ public class FranchiseService {
     @Autowired
     private CharacterRepository characterRepository;
 
-    public List<Movie> getMoviesByFranchise(Long id){
-        return (List<Movie>) franchiseRepository.getById(id).movies;
-    }
+    public List<Movie> getMoviesByFranchise(Long id){ return movieRepository.getAllByFranchiseId(id); }
     public List<Character> getCharactersByFranchise(Long id){
-        return (List<Character>) franchiseRepository.getById(id).characters;
+        return characterRepository.getAllByFranchiseId(id);
     }
 
     public Franchise save(Franchise franchise) {
-        return franchiseRepository.save(franchise);
+        return franchiseRepository.saveAndFlush(franchise);
+    }
+
+    public List<Franchise> getFranchises() {
+        return franchiseRepository.findAll();
+    }
+
+    public boolean exists(Long id) {
+        return franchiseRepository.existsById(id);
+    }
+    public Franchise getById(Long id){
+        return franchiseRepository.getFranchiseById(id);
     }
 
 
