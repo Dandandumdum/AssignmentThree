@@ -16,5 +16,7 @@ public interface CharacterRepository extends JpaRepository<Character,Long> {
     //Finds a specific character with a character id matching the input id and returns the object
     Character getCharacterById(Long id);
 
+    List <Character> findAllByMoviesEquals(Long id);
+
 
 }

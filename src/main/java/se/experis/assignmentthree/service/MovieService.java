@@ -7,6 +7,7 @@ import se.experis.assignmentthree.models.Movie;
 import se.experis.assignmentthree.repositories.CharacterRepository;
 import se.experis.assignmentthree.repositories.MovieRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 //Service class for Movie object
 @Service
@@ -16,8 +17,6 @@ public class MovieService {
     private MovieRepository movieRepository;
     @Autowired
     private CharacterRepository characterRepository;
-
-    public List<Character> getCharactersByMovie(Long id){ return characterRepository.getAllById(id);    }
 
     public Movie save(Movie movie) {
         return movieRepository.save(movie);
@@ -34,5 +33,11 @@ public class MovieService {
     public Movie getById(Long id){
         return movieRepository.findMovieById(id);
     }
-
+    //Custom method for unidirectional data
+    public List<Character> getCharactersByMovie(Long id){
+       Movie movie =getById(id);
+       List <Character> charactersByMovie = new ArrayList<>() ;
+       charactersByMovie.addAll(movie.characters);
+       return charactersByMovie;
+    }
 }
