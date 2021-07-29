@@ -42,8 +42,8 @@ a) Create models and Repositories for Character, Movie and Franchise entities an
                                 
           - Swagger/Open API documentation
 
-This assignment was done using Java in IntelliJ and the Swagger link is as follows:
-http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/
+This assignment was done using Java in IntelliJ and the Heroku link is as follows:
+
 
 Postman was also used to for endpoint testing and the Json file is included within this repository.
 
