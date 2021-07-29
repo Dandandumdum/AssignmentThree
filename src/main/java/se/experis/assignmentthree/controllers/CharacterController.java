@@ -59,4 +59,21 @@ public class CharacterController {
         return new ResponseEntity<>(returnCharacter, status);
 
     }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Character> deleteCharacter(@PathVariable Long id){
+        Character returnCharacter = new Character();
+        HttpStatus status;
+        //Checks whether object exists, returning 404 if not.
+        if(characterService.exists(id)){
+            status = HttpStatus.OK;
+            characterService.delete(id);
+            returnCharacter = characterService.getById(id);
+        } else {
+            status = HttpStatus.NOT_FOUND;
+        }
+        return new ResponseEntity<>(returnCharacter, status);
+    }
+
+
+
 }
