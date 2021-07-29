@@ -5,8 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import se.experis.assignmentthree.models.Character;
-import se.experis.assignmentthree.models.Franchise;
-import se.experis.assignmentthree.models.Movie;
 import se.experis.assignmentthree.service.CharacterService;
 
 import java.util.List;
@@ -44,12 +42,12 @@ public class CharacterController {
         HttpStatus status = HttpStatus.CREATED;
         return new ResponseEntity<>(add, status);
     }
-    @PutMapping("/update/{characterId}")//Updates the character object with matching id to the input
-    public ResponseEntity<Character> updateCharacter(@PathVariable Long characterId, @RequestBody Character character){
+    @PutMapping("/update/{id}")//Updates the character object with matching id to the input
+    public ResponseEntity<Character> updateCharacter(@PathVariable Long id, @RequestBody Character character){
         Character returnCharacter = new Character();
         HttpStatus status;
         //Checks whether the franchise object to be updated matches the object specified by the input, returning BAD REQUEST if not
-        if(!characterId.equals(character.getId())){
+        if(!id.equals(character.getId())){
             status = HttpStatus.BAD_REQUEST;
             return new ResponseEntity<>(returnCharacter,status);
         }

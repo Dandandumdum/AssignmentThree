@@ -8,7 +8,6 @@ import se.experis.assignmentthree.models.Character;
 import se.experis.assignmentthree.models.Franchise;
 import se.experis.assignmentthree.models.Movie;
 import se.experis.assignmentthree.service.FranchiseService;
-import se.experis.assignmentthree.service.MovieService;
 
 import java.util.List;
 
@@ -58,12 +57,12 @@ public class FranchiseController {
         HttpStatus status = HttpStatus.CREATED;
         return new ResponseEntity<>(add, status);
     }
-    @PutMapping("/update/{franchiseId}")//Updates the franchise object with matching id to the input
-    public ResponseEntity<Franchise> updateFranchise(@PathVariable Long franchiseId, @RequestBody Franchise franchise){
+    @PutMapping("/update/{id}")//Updates the franchise object with matching id to the input
+    public ResponseEntity<Franchise> updateFranchise(@PathVariable Long id, @RequestBody Franchise franchise){
         Franchise returnFran = new Franchise();
         HttpStatus status;
         //Checks whether the franchise object to be updated matches the object specified by the input, returning BAD REQUEST if not
-        if(!franchiseId.equals(franchise.getId())){
+        if(!id.equals(franchise.getId())){
             status = HttpStatus.BAD_REQUEST;
             return new ResponseEntity<>(returnFran,status);
         }

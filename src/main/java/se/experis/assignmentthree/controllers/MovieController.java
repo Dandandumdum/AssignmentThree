@@ -54,12 +54,12 @@ public class MovieController {
         HttpStatus status = HttpStatus.CREATED;
         return new ResponseEntity<>(add, status);
     }
-    @PutMapping("/update/{movieId}")//Updates the movie object with matching id to the input
-    public ResponseEntity<Movie> updateMovie(@PathVariable Long movieId, @RequestBody Movie movie){
+    @PutMapping("/update/{id}")//Updates the movie object with matching id to the input
+    public ResponseEntity<Movie> updateMovie(@PathVariable Long id, @RequestBody Movie movie){
         Movie returnMovie = new Movie();
         HttpStatus status;
         //Checks whether the franchise object to be updated matches the object specified by the input, returning BAD REQUEST if not
-        if(!movieId.equals(movie.getId())){
+        if(!id.equals(movie.getId())){
             status = HttpStatus.BAD_REQUEST;
             return new ResponseEntity<>(returnMovie,status);
         }
@@ -69,13 +69,13 @@ public class MovieController {
         return new ResponseEntity<>(returnMovie, status);
 
     }
-    @PutMapping("/update/character/{movieId}")//Updates the movie object with characters, if the movie id with matching id to the input.
+    @PutMapping("/update/character/{id}")//Updates the movie object with characters, if the movie id with matching id to the input.
     // characters to be included are within an int array in the Json body of the request.
-    public ResponseEntity<Movie> updateCharacterInMovie(@PathVariable Long movieId, @RequestBody Movie movie){
+    public ResponseEntity<Movie> updateCharacterInMovie(@PathVariable Long id, @RequestBody Movie movie){
         Movie returnMovie = new Movie();
         HttpStatus status;
         //Checks whether the franchise object to be updated matches the object specified by the input, returning BAD REQUEST if not
-        if(!movieId.equals(movie.getId())){
+        if(!id.equals(movie.getId())){
             status = HttpStatus.BAD_REQUEST;
             return new ResponseEntity<>(returnMovie,status);
         }
