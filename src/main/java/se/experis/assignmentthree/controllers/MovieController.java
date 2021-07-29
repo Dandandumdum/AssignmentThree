@@ -5,13 +5,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import se.experis.assignmentthree.models.Character;
-import se.experis.assignmentthree.models.Franchise;
 import se.experis.assignmentthree.models.Movie;
-import se.experis.assignmentthree.repositories.MovieRepository;
-import se.experis.assignmentthree.service.CharacterService;
 import se.experis.assignmentthree.service.MovieService;
 
-import java.util.Arrays;
 import java.util.List;
 
 @RestController

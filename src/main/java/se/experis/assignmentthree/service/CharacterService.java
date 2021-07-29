@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.experis.assignmentthree.models.Character;
 import se.experis.assignmentthree.repositories.CharacterRepository;
-import se.experis.assignmentthree.repositories.MovieRepository;
 
 import java.util.List;
 //Service class for character object.
