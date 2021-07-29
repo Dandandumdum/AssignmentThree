@@ -1,10 +1,10 @@
 package se.experis.assignmentthree.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -28,7 +28,7 @@ public class Movie {
     private String picture;//URL
     private String trailer;//URL
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "franchise_id")
     public Franchise franchise;
 
@@ -41,13 +41,13 @@ public class Movie {
         }
     }
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "character_movie",
             joinColumns = {@JoinColumn(name = "movie_id")},
             inverseJoinColumns = {@JoinColumn(name = "character_id")}
     )
-    public Set<Character> characters;
+    public Set<Character> characters = new HashSet<Character>();
 
     @JsonGetter("characters")
     public List<String> characters() {

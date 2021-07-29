@@ -1,7 +1,6 @@
 package se.experis.assignmentthree.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;

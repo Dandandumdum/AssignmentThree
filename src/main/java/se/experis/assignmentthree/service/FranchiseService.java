@@ -40,5 +40,7 @@ public class FranchiseService {
         return franchiseRepository.getFranchiseById(id);
     }
 
+    public  Franchise delete(Long id){return franchiseRepository.deleteFranchiseById(id);}
+
 
 }

@@ -11,10 +11,10 @@ import java.util.List;
 public interface CharacterRepository extends JpaRepository<Character,Long> {
     //Finds all characters with a character id matching franchise id (input) and returns a list
     List<Character> findAllByFranchiseId(Long id);
-    //Finds all characters with a character id matching the input id and returns a list
-    List<Character> getAllById(Long id);
     //Finds a specific character with a character id matching the input id and returns the object
     Character getCharacterById(Long id);
+    //Finds a specific character with a character id matching the input id and deletes the object
+    Character deleteCharacterById(Long id);
 
 
 }
