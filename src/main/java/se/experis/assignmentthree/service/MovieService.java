@@ -30,6 +30,8 @@ public class MovieService {
         return movieRepository.existsById(id);
     }
 
+    public Movie delete(Long id) {return movieRepository.deleteMovieById(id);}
+
     public Movie getById(Long id){
         return movieRepository.findMovieById(id);
     }

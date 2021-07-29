@@ -15,7 +15,7 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
     List<Movie> getAllByFranchiseId(Long franchise_id);
     //Finds a specific movie with a movie id matching the input id and returns the object
     Movie findMovieById(Long id);
-
+    Movie deleteMovieById(Long id);
 
 
 

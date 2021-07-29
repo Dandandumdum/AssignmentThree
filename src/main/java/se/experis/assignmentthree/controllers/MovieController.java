@@ -85,4 +85,18 @@ public class MovieController {
         return new ResponseEntity<>(returnMovie, status);
 
     }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Movie> deleteMovie(@PathVariable Long id){
+        Movie returnMovie = new Movie();
+        HttpStatus status;
+        //Checks whether object exists, returning 404 if not.
+        if(movieService.exists(id)){
+            status = HttpStatus.OK;
+            movieService.delete(id);
+            returnMovie = movieService.getById(id);
+        } else {
+            status = HttpStatus.NOT_FOUND;
+        }
+        return new ResponseEntity<>(returnMovie, status);
+    }
 }
