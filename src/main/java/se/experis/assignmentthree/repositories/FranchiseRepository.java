@@ -9,5 +9,6 @@ import se.experis.assignmentthree.models.Franchise;
 public interface FranchiseRepository extends JpaRepository<Franchise,Long> {
     //Finds a specific franchise with a franchise id matching the input id and returns the object
     Franchise getFranchiseById(Long id);
+    Franchise deleteFranchiseById (Long id);
 
 }

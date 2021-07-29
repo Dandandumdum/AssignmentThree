@@ -89,6 +89,20 @@ public class FranchiseController {
         return new ResponseEntity<>(returnFran, status);
 
     }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Franchise> deleteFranchise(@PathVariable Long id){
+        Franchise returnFranchise = new Franchise();
+        HttpStatus status;
+        //Checks whether object exists, returning 404 if not.
+        if(franchiseService.exists(id)){
+            status = HttpStatus.OK;
+            franchiseService.delete(id);
+            returnFranchise = franchiseService.getById(id);
+        } else {
+            status = HttpStatus.NOT_FOUND;
+        }
+        return new ResponseEntity<>(returnFranchise, status);
+    }
 
 
 
