@@ -22,7 +22,6 @@ public class FranchiseService {
 
     public List<Movie> getMoviesByFranchise(Long id){ return movieRepository.getAllByFranchiseId(id); }
 
-    public List<Character> getCharactersByFranchise(Long id){ return characterRepository.findAllByFranchiseId(id); }
 
     public Franchise save(Franchise franchise) {
         return franchiseRepository.save(franchise);

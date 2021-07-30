@@ -37,20 +37,6 @@ public class Franchise {
         }
         return null;
     }
-    @OneToMany
-    @JoinColumn(name = "franchise_id")
-    public Set<Character> characters;
-
-    @JsonGetter("characters")
-    public List<String> characters() {
-        if(characters != null) {
-            return characters.stream()
-                    .map(characters -> {
-                        return "/api/v1/characters/" + characters.getId();
-                    }).collect(Collectors.toList());
-        }
-        return null;
-    }
 
     public void setId(Long id) {
         this.id = id;

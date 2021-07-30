@@ -29,18 +29,7 @@ public class Character {
     private String gender;
     private String picture; //URL
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "franchise_id")
-    public Franchise franchise;
 
-    @JsonGetter("franchise")
-    public String franchise() {
-        if(franchise!= null){
-            return "/api/v1/franchise/" + franchise.getId();
-        }else{
-            return null;
-        }
-    }
 
     @ManyToMany(mappedBy = "characters", cascade = CascadeType.ALL)
     public Set<Movie> movies = new HashSet<Movie>();
