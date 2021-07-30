@@ -23,6 +23,8 @@ public class Character {
     @JoinColumn(name = "full_name")
     private String fullName;
 
+    @NotBlank
+    @Size(min = 0, max = 15)
     private String alias;
     private String gender;
     private String picture; //URL
