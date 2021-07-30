@@ -8,6 +8,7 @@ This project follows the outline of the specification provided by Noroff, as out
 Use Hibernate to create a database with the following minimum requirements: 
 
 a) Create models and Repositories for Character, Movie and Franchise entities and to cater for these specifications:
+
     -Business rules
       Characters and Movies: One movie may contain many characters, and a character can play in many movies.
       Movies and Franchises: One movie belongs to one franchise, but a franchise can contain many movies.
@@ -43,6 +44,7 @@ a) Create models and Repositories for Character, Movie and Franchise entities an
           - Swagger/Open API documentation
 
 This assignment was done using Java in IntelliJ and the Heroku link is as follows:
+Swagger can be acessed via this link when the program is running through port8080:
 
 
 Postman was also used to for endpoint testing and the Json file is included within this repository.
