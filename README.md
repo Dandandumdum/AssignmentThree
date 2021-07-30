@@ -43,10 +43,9 @@ a) Create models and Repositories for Character, Movie and Franchise entities an
                                 
           - Swagger/Open API documentation
 
-This assignment was done using Java in IntelliJ and the Heroku link is as follows:
+This assignment was done using Java in IntelliJ,
 Swagger can be acessed via this link when the program is running through port8080:
 http://localhost:8080/swagger-ui.html
-
 
 Postman was also used to for endpoint testing and the Json file is included within this repository.
 
