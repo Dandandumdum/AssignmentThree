@@ -29,8 +29,6 @@ public class Character {
     private String gender;
     private String picture; //URL
 
-
-
     @ManyToMany(mappedBy = "characters", cascade = CascadeType.ALL)
     public Set<Movie> movies = new HashSet<Movie>();
 
