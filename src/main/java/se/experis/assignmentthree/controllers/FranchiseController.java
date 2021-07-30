@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.*;
 import se.experis.assignmentthree.models.Character;
 import se.experis.assignmentthree.models.Franchise;
 import se.experis.assignmentthree.models.Movie;
+import se.experis.assignmentthree.service.CharacterService;
 import se.experis.assignmentthree.service.FranchiseService;
+import se.experis.assignmentthree.service.MovieService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -23,6 +26,11 @@ public class FranchiseController {
     //All endpoints return a response entity containing both a http status and the actual Json body
     @Autowired
     private FranchiseService franchiseService;
+    @Autowired
+    private CharacterService characterService;
+    @Autowired
+    private MovieService movieService;
+
 
     @Operation(summary = "Get all franchises")
     @ApiResponses(value = {
@@ -84,11 +92,16 @@ public class FranchiseController {
                     content = @Content) })
     @GetMapping("/characters/{id}")//Gets all character objects in the form of a list which are part of the franchise object, based upon the franchise id
     public ResponseEntity<List<Character>> getAllCharactersByFranchise(@PathVariable Long id){
-        List<Character>data = null;
+        List<Character>data = new ArrayList<>();
+        List<Movie>data2 = new ArrayList<>();
         HttpStatus status;
         if(franchiseService.exists(id)){
             status = HttpStatus.OK;
-            data = franchiseService.getCharactersByFranchise(id);
+            data2 = franchiseService.getMoviesByFranchise(id);
+            for (Movie movie:data2) {
+                assert data != null;
+                data.addAll(movie.characters);
+            }
         } else {
             status = HttpStatus.NOT_FOUND;
         }

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonGetter;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -14,8 +16,11 @@ public class Franchise {
     @Id//Auto-Incremented Id value
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @NotBlank
+    @Size(min = 0, max = 20)
     private String name;
+    @NotBlank
+    @Size(min = 0, max = 50)
     private String description;
 
     @OneToMany
@@ -28,20 +33,6 @@ public class Franchise {
             return movies.stream()
                     .map(movie -> {
                         return "/api/v1/movies/" + movie.getId();
-                    }).collect(Collectors.toList());
-        }
-        return null;
-    }
-    @OneToMany
-    @JoinColumn(name = "franchise_id")
-    public Set<Character> characters;
-
-    @JsonGetter("characters")
-    public List<String> characters() {
-        if(characters != null) {
-            return characters.stream()
-                    .map(characters -> {
-                        return "/api/v1/characters/" + characters.getId();
                     }).collect(Collectors.toList());
         }
         return null;
