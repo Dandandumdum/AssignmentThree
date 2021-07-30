@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonGetter;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -16,6 +18,8 @@ public class Character {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
+    @Size(min = 0, max = 20)
     @JoinColumn(name = "full_name")
     private String fullName;
 

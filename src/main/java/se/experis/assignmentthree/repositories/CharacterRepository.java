@@ -16,5 +16,4 @@ public interface CharacterRepository extends JpaRepository<Character,Long> {
     //Finds a specific character with a character id matching the input id and deletes the object
     Character deleteCharacterById(Long id);
 
-
 }
